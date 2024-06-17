@@ -1,0 +1,13 @@
+:root {
+  --bg-color: #fdf7f2;
+  --focus: #846d62;
+  --secondary-color: #a8a29c;
+  --text-color: rgb(30, 29, 29);
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 100vh;
+  background-color: var(--bg-color);
+}

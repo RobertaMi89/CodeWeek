@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./css/style.css" />
     <title>Beautiful Commerce</title>
   </head>
@@ -11,19 +17,33 @@
       <p id="promo">PROMO 20% sul primo acquisto</p>
       <!--promo in corso, logo, login utente, cerca, carrello-->
       <nav class="navbar">
-        <span>
-          <a href="#"
-            ><img src="./assets/beautiful commerce.png" alt="logo" />
-          </a>
+        <a href="#"
+          ><img src="./assets/beautiful commerce.png" alt="logo" />
+        </a>
+        <span class="container">
+          <span class="search-box">
+            <input type="text" />
+            <span></span>
+          </span>
         </span>
-        <span>cerca</span>
-        <span>log in</span>
-        <span>carrello</span>
+        <div class="user">
+          <span><img src="./assets/logUser.png" alt="log in" />Ciao name</span>
+          <span><img src="./assets/cartLogo.png" alt="cart" />(0)</span>
+        </div>
       </nav>
     </header>
     <main>
-      <div class="sidebar"><!--menu side con categorie, (filtro?)--></div>
-      <div id="cards-container"></div>
+      <div class="sidebar">
+        <div class="menu">
+          <button>Electronics</button>
+          <button>Jewelery</button>
+          <button>Men's clothing</button>
+          <button>Women's clothing</button>
+        </div>
+        <div class="filter"><!-- prezzo, rate,--></div>
+      </div>
+      <!--CARDS-->
+      <div id="wrapper" class="wrapper"></div>
     </main>
     <footer>
       <!--dati e-commerce e social, pulsante per tornare su, contattaci, newsletter, (bot per chat?) -->

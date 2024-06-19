@@ -4,10 +4,25 @@
   --secondary-color: #a8a29c;
   --text-color: rgb(30, 29, 29);
 }
+.sidebar {
+  max-height: calc(1100vh);
+  background-color: var(--bg-color);
+}
 .menu {
   display: flex;
+  position: sticky;
+  top: 0;
   flex-direction: column;
   width: 200px;
-  height: 100vh;
-  background-color: var(--bg-color);
+  padding: 10px;
+}
+
+.menu span {
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.menu button {
+  margin-bottom: 20px;
 }

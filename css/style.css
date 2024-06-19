@@ -1,15 +1,23 @@
 @import url("./sideBar.css");
 @import url("./cards.css");
+@import url("./cart.css");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 /*reset*/
 * {
   margin: 0;
   padding: 0;
+  font-family: "Raleway", sans-serif;
+}
+html,
+body {
+  height: 100%;
 }
 :root {
   --bg-color: #fdf7f2;
   --focus: #846d62;
   --secondary-color: #a8a29c;
   --text-color: rgb(30, 29, 29);
+  --btn: #f9f0df;
 }
 /*PROMO*/
 #promo {
@@ -30,7 +38,8 @@ nav {
   background-color: var(--bg-color);
 }
 nav a img {
-  width: 130px;
+  width: 120px;
+  margin-left: 10px;
 }
 nav span img {
   width: 30px;
@@ -144,7 +153,9 @@ button:active {
     0px 1px 1px rgba(81, 41, 10, 0.15);
   transform: translateY(0.125rem);
 }
-
+button:hover {
+  background-image: linear-gradient(to bottom, #f8eedb, #fff);
+}
 button:focus {
   box-shadow: rgba(72, 35, 7, 0.46) 0 0 0 4px,
     -6px 8px 10px rgba(81, 41, 10, 0.1), 0px 2px 2px rgba(81, 41, 10, 0.2);
@@ -152,4 +163,24 @@ button:focus {
 /*MAIN*/
 main {
   display: flex;
+}
+/*LOADER*/
+.loader {
+  border: 8px solid var(--btn);
+  border-top: 8px solid var(--focus);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  animation: spin 2s linear infinite;
+  align-self: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

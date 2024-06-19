@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ita">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +14,15 @@
   </head>
   <body>
     <header>
-      <p id="promo">PROMO 20% sul primo acquisto</p>
+      <div class="focusBanner">
+        <p id="promo">PROMO 20% sul primo acquisto</p>
+        <select id="language-select">
+          <option value="it">Italiano</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
       <!--promo in corso, logo, login utente, cerca, carrello-->
       <nav class="navbar">
         <a href="#"
@@ -28,7 +36,7 @@
         </span>
         <div class="user">
           <span
-            ><img src="./assets/logUser.png" alt="log in" />Ciao
+            ><img src="./assets/logUser.png" alt="log in" />Ciao,
             <span id="userName"></span
           ></span>
           <span id="cart-icon" class="cart">
@@ -38,14 +46,14 @@
         </div>
         <div class="cartTab">
           <div class="headCart">
-            <h2>Shopping Cart</h2>
+            <h2>Carrello</h2>
             <span class="close">X</span>
           </div>
           <div class="listCart"></div>
           <div class="btn">
-            <span class="cart-total">Total:</span>
-            <button class="clear">Clear All</button>
-            <button class="checkOut">CHECKOUT</button>
+            <span class="cart-total">Totale:</span>
+            <button class="clear">Svuota</button>
+            <button class="checkOut">Acquista</button>
           </div>
         </div>
       </nav>
@@ -57,16 +65,16 @@
           <span>Ricerca per</span>
           <span>Categoria</span>
           <button class="filter-button" data-category="/electronics">
-            Electronics
+            Elettronica
           </button>
           <button class="filter-button" data-category="/jewelery">
-            Jewelery
+            Gioielli
           </button>
           <button class="filter-button" data-category="/men's clothing">
-            Men's clothing
+            Abbigliamento Uomo
           </button>
           <button class="filter-button" data-category="/women's clothing">
-            Women's clothing
+            Abbigliamento Donna
           </button>
           <span>Prezzo</span>
           <span>Recensioni</span>

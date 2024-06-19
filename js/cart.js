@@ -16,7 +16,10 @@ export function toggleCart() {
 }
 
 // Recupera i dati dal localStorage all'avvio della pagina
-function initializeCart() {
+export function initializeCart() {
+  const cartElement = document.querySelector(".cartTab");
+  cartElement.style.display = "none"; // Assicurati che il carrello sia nascosto all'inizio
+
   const savedCart = localStorage.getItem("cart");
   if (savedCart) {
     cart = JSON.parse(savedCart);
@@ -27,6 +30,11 @@ function initializeCart() {
   updateCartTotal();
   updateCartCount();
   updateCartView();
+}
+
+// Ottieni il carrello corrente
+export function getCart() {
+  return cart;
 }
 
 // Salva il carrello nel localStorage
@@ -118,7 +126,6 @@ function updateCartView() {
     item.appendChild(deleteBtn);
 
     // Event listener per modificare la quantità del prodotto nel carrello
-    // Event listener per modificare la quantità del prodotto nel carrello
     quantityInput.addEventListener("input", () => {
       let newQuantity = parseInt(quantityInput.value);
       if (newQuantity < 1) {
@@ -159,4 +166,4 @@ function removeProductFromCart(productId) {
   }
 }
 
-initializeCart();
+initializeCart(); // Inizializza il carrello all'avvio della pagina

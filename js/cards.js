@@ -1,4 +1,5 @@
 import { getProducts } from "./fetch.js";
+import { addToCart } from "./cart.js";
 
 export async function printAllProducts() {
   const productList = document.getElementById("wrapper");
@@ -25,7 +26,7 @@ export async function printAllProducts() {
   }
 }
 
-function createProductCard(product) {
+export function createProductCard(product) {
   const card = document.createElement("div");
   card.classList.add("product-card");
 
@@ -50,17 +51,21 @@ function createProductCard(product) {
   text.appendChild(title);
 
   const rating = document.createElement("p");
-  rating.textContent = product.rating.rate || "rate non disponibile";
+  rating.textContent = `Rate: ${product.rating.rate}`;
+  rating.classList.add("rateText");
+  const ratingStars = generateRatingStars(product.rating.rate || 0);
+  ratingStars.classList.add("hearts");
+  rating.appendChild(ratingStars);
   text.appendChild(rating);
 
   const description = document.createElement("p");
-  description.textContent =
-    product.description || "Descrizione non disponibile";
+  description.textContent = product.description;
+  product.description || "Descrizione non disponibile";
   text.appendChild(description);
 
   const btnDiv = document.createElement("div");
   btnDiv.classList.add("product-price-btn");
-  card.appendChild(btnDiv);
+  info.appendChild(btnDiv);
 
   const priceP = document.createElement("p");
   priceP.textContent = `$`;
@@ -71,8 +76,26 @@ function createProductCard(product) {
   priceP.appendChild(priceSpan);
 
   const btn = document.createElement("button");
+  btn.classList.add("buyNow");
+  btn.textContent = "Buy now";
   btn.type = "button";
+  btn.addEventListener("click", () => {
+    addToCart(product);
+  });
   btnDiv.appendChild(btn);
 
   return card;
+}
+function generateRatingStars(rate) {
+  const ratingContainer = document.createElement("span");
+
+  for (let i = 0; i < rate; i++) {
+    const star = document.createElement("i");
+    if (i < rate) {
+      star.classList.add("fas", "fa-star", "filled");
+    }
+    ratingContainer.appendChild(star);
+  }
+
+  return ratingContainer;
 }

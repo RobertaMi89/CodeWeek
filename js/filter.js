@@ -1,12 +1,24 @@
-//filtro dentro il campo input
-const searchInput = document.getElementById("search-input");
+import { getCategories } from "./fetch.js";
+import { createProductCard } from "./cards.js";
+//FILTRO RICERCA BOTTONI
 
-searchInput.addEventListener("input", () => {
-  const input = searchInput.value.toLowerCase();
-  const products = document.querySelectorAll(".card");
+export function filteredCategories() {
+  document.querySelectorAll(".filter-button").forEach((button) => {
+    button.addEventListener("click", async (e) => {
+      const category = e.target.getAttribute("data-category");
+      try {
+        const data = await getCategories(category);
+        const productList = document.getElementById("wrapper");
 
-  products.forEach((product) => {
-    const title = product.querySelector("h3").textContent.toLowerCase();
-    product.style.display = title.includes(input) ? "block" : "none";
+        productList.innerHTML = "";
+
+        data.forEach((product) => {
+          const card = createProductCard(product);
+          productList.appendChild(card);
+        });
+      } catch (error) {
+        console.error("Errore:", error);
+      }
+    });
   });
-});
+}

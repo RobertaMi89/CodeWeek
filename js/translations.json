@@ -1,0 +1,130 @@
+{
+  "it": {
+    "promo": "PROMO 20% sul primo acquisto",
+    "hello": "Ciao",
+    "shopping-cart": "Carrello",
+    "total": "Totale",
+    "checkout": "Acquista",
+    "categories": {
+      "electronics": "Elettronica",
+      "jewelery": "Gioielli",
+      "mens_clothing": "Abbigliamento Uomo",
+      "womens_clothing": "Abbigliamento Donna"
+    },
+    "cart": {
+      "remove": "Rimuovi",
+      "update_quantity": "Aggiorna quantità"
+    },
+    "sidebar": {
+      "search_by": "Ricerca per",
+      "category": "Categoria",
+      "electronics": "Elettronica",
+      "jewelery": "Gioielli",
+      "mens_clothing": "Abbigliamento Uomo",
+      "womens_clothing": "Abbigliamento Donna",
+      "price": "Prezzo",
+      "reviews": "Recensioni"
+    },
+    "footer": {
+      "terms": "Termini e condizioni",
+      "privacy": "Informativa sulla privacy",
+      "sitemap": "Mappa del sito"
+    }
+  },
+  "en": {
+    "promo": "20% OFF on your first purchase",
+    "hello": "Hello",
+   "shopping-cart": "Shopping Cart",
+    "total": "Total",
+    "checkout": "Checkout",
+    "categories": {
+      "electronics": "Electronics",
+      "jewelery": "Jewelery",
+      "mens_clothing": "Men's Clothing",
+      "womens_clothing": "Women's Clothing"
+    },
+    "cart": {
+      "remove": "Remove",
+      "update_quantity": "Update Quantity"
+    },
+    "sidebar": {
+      "search_by": "Search by",
+      "category": "Category",
+      "electronics": "Electronics",
+      "jewelery": "Jewelery",
+      "mens_clothing": "Men's Clothing",
+      "womens_clothing": "Women's Clothing",
+      "price": "Price",
+      "reviews": "Reviews"
+    },
+    "footer": {
+      "terms": "Terms and Conditions",
+      "privacy": "Privacy Policy",
+      "sitemap": "Site Map"
+    }
+  },
+  "es": {
+    "promo": "20% de descuento en tu primera compra",
+    "hello": "Hola",
+   "shopping-cart": "Carrito de compras",
+    "total": "Total",
+    "checkout": "Comprar",
+    "categories": {
+      "electronics": "Electrónica",
+      "jewelery": "Joyería",
+      "mens_clothing": "Ropa de Hombre",
+      "womens_clothing": "Ropa de Mujer"
+    },
+    "cart": {
+      "remove": "Eliminar",
+      "update_quantity": "Actualizar Cantidad"
+    },
+    "sidebar": {
+      "search_by": "Buscar por",
+      "category": "Categoría",
+      "electronics": "Electrónica",
+      "jewelery": "Joyería",
+      "mens_clothing": "Ropa de Hombre",
+      "womens_clothing": "Ropa de Mujer",
+      "price": "Precio",
+      "reviews": "Opiniones"
+    },
+    "footer": {
+      "terms": "Términos y condiciones",
+      "privacy": "Política de privacidad",
+      "sitemap": "Mapa del sitio"
+    }
+  },
+  "fr": {
+    "promo": "20% de réduction sur votre premier achat",
+    "hello": "Bonjour",
+   "shopping-cart": "Panier",
+    "total": "Total",
+    "checkout": "Acheter",
+    "categories": {
+      "electronics": "Électronique",
+      "jewelery": "Bijoux",
+      "mens_clothing": "Vêtements pour hommes",
+      "womens_clothing": "Vêtements pour femmes"
+    },
+    "cart": {
+      "remove": "Supprimer",
+      "update_quantity": "Mettre à jour la quantité"
+    },
+    "sidebar": {
+      "search_by": "Recherche par",
+      "category": "Catégorie",
+      "electronics": "Électronique",
+      "jewelery": "Bijoux",
+      "mens_clothing": "Vêtements pour hommes",
+      "womens_clothing": "Vêtements pour femmes",
+      "price": "Prix",
+      "reviews": "Avis"
+    },
+    "footer": {
+      "terms": "Termes et conditions",
+      "privacy": "Politique de confidentialité",
+      "sitemap": "Plan du site"
+    }
+  }
+}

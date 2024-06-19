@@ -22,27 +22,58 @@
         </a>
         <span class="container">
           <span class="search-box">
-            <input type="text" />
+            <input type="text" id="search-input" />
             <span></span>
           </span>
         </span>
         <div class="user">
-          <span><img src="./assets/logUser.png" alt="log in" />Ciao name</span>
-          <span><img src="./assets/cartLogo.png" alt="cart" />(0)</span>
+          <span
+            ><img src="./assets/logUser.png" alt="log in" />Ciao
+            <span id="userName"></span
+          ></span>
+          <span id="cart-icon" class="cart">
+            <img src="./assets/cartLogo.png" alt="cart" />
+            <span class="cart-count"></span>
+          </span>
+        </div>
+        <div class="cartTab">
+          <div class="headCart">
+            <h2>Shopping Cart</h2>
+            <span class="close">X</span>
+          </div>
+          <div class="listCart"></div>
+          <div class="btn">
+            <span class="cart-total">Total:</span>
+            <button class="clear">Clear All</button>
+            <button class="checkOut">CHECKOUT</button>
+          </div>
         </div>
       </nav>
     </header>
     <main>
+      <!--SIDEBAR-->
       <div class="sidebar">
         <div class="menu">
-          <button>Electronics</button>
-          <button>Jewelery</button>
-          <button>Men's clothing</button>
-          <button>Women's clothing</button>
+          <span>Ricerca per</span>
+          <span>Categoria</span>
+          <button class="filter-button" data-category="/electronics">
+            Electronics
+          </button>
+          <button class="filter-button" data-category="/jewelery">
+            Jewelery
+          </button>
+          <button class="filter-button" data-category="/men's clothing">
+            Men's clothing
+          </button>
+          <button class="filter-button" data-category="/women's clothing">
+            Women's clothing
+          </button>
+          <span>Prezzo</span>
+          <span>Recensioni</span>
         </div>
-        <div class="filter"><!-- prezzo, rate,--></div>
       </div>
       <!--CARDS-->
+      <div id="loader" class="loader"></div>
       <div id="wrapper" class="wrapper"></div>
     </main>
     <footer>

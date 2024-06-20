@@ -13,8 +13,7 @@
   color: var(--bg-color);
   position: fixed;
   inset: 0 0 0 auto;
-  display: grid;
-  grid-template-rows: 70px 1fr 70px;
+  overflow-y: auto;
 }
 .headCart {
   display: flex;
@@ -76,10 +75,13 @@
   text-align: center;
   align-items: center;
 }
-.listCart {
-  overflow: auto;
-}
 .cart-total {
   width: 100%;
   text-align: center;
+}
+.checkOut[disabled] {
+  background-color: #ccc; /* Colore di sfondo grigio */
+  color: #666; /* Colore del testo grigio */
+  cursor: not-allowed; /* Cambia il cursore a non consentito */
+  opacity: 0.6; /* Riduci leggermente l'opacità */
 }

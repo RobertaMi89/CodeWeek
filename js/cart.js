@@ -30,6 +30,9 @@ export function initializeCart() {
   updateCartTotal();
   updateCartCount();
   updateCartView();
+
+  // Aggiorna lo stato del pulsante "Acquista"
+  updateCheckoutButtonState();
 }
 
 // Ottieni il carrello corrente
@@ -59,6 +62,9 @@ export function addToCart(product) {
   updateCartView();
 
   saveCartToLocalStorage();
+
+  // Aggiorna lo stato del pulsante "Acquista" dopo l'aggiunta al carrello
+  updateCheckoutButtonState();
 }
 
 function updateCartCount() {
@@ -163,7 +169,48 @@ function removeProductFromCart(productId) {
     updateCartCount();
     updateCartView();
     saveCartToLocalStorage();
+
+    // Aggiorna lo stato del pulsante "Acquista" dopo la rimozione dal carrello
+    updateCheckoutButtonState();
   }
 }
 
-initializeCart(); // Inizializza il carrello all'avvio della pagina
+// Funzione per aggiornare lo stato del pulsante "Acquista"
+function updateCheckoutButtonState() {
+  const checkoutButton = document.querySelector(".checkOut");
+  checkoutButton.disabled = cart.length === 0;
+}
+
+// Inizializza il carrello all'avvio della pagina
+initializeCart();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const clearBtn = document.querySelector(".clear");
+  const checkoutButton = document.querySelector(".checkOut");
+
+  // Gestore di eventi per il pulsante "Svuota"
+  clearBtn.addEventListener("click", function () {
+    // Svuota il carrello
+    cart = [];
+    saveCartToLocalStorage();
+
+    // Aggiorna la visualizzazione del carrello
+    updateCartView();
+
+    // Aggiorna il totale e il conteggio
+    updateCartTotal();
+    updateCartCount();
+
+    // Disabilita il pulsante "Acquista" se il carrello è vuoto
+    updateCheckoutButtonState();
+  });
+
+  // Gestore di eventi per il pulsante "Acquista"
+  checkoutButton.addEventListener("click", function () {
+    // Rimpiazza con l'URL effettivo della pagina di pagamento
+    window.location.href = "../../checkout/checkout.html";
+  });
+
+  // Chiama la funzione per inizializzare lo stato del pulsante "Acquista"
+  updateCheckoutButtonState();
+});

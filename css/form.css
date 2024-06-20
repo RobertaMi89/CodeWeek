@@ -26,7 +26,7 @@
   overflow: hidden;
   margin: 12% auto;
   border: 0;
-  width: 400px;
+  width: 800px;
   border-radius: 10px;
   box-shadow: 5px 20px 50px #000;
 }
@@ -34,7 +34,15 @@
 #chk {
   display: none;
 }
-
+.activeForm {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#labelSignUp {
+  width: 100%;
+  margin-top: 8px;
+}
 .signup {
   position: relative;
   width: 100%;
@@ -59,7 +67,7 @@ label {
 }
 
 input {
-  width: 60%;
+  width: 44%;
   height: 10px;
   background: #e0dede;
   justify-content: center;
@@ -70,7 +78,9 @@ input {
   outline: none;
   border-radius: 5px;
 }
-
+#labelLogin {
+  margin-top: 90px;
+}
 .login {
   height: 460px;
   background: #eee;

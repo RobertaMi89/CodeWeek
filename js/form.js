@@ -10,6 +10,9 @@ export function initLogInUserModal() {
   const signupName = signupForm.querySelector("input[name='txt']");
   const signUpEmail = signupForm.querySelector("input[name='email']");
   const signUpPass = signupForm.querySelector("input[name='pswd']");
+  const signUpPhone = signupForm.querySelector("input[name='tel']");
+  const signUpAddress = signupForm.querySelector("input[name='address']");
+  const signUpCreditCard = signupForm.querySelector("input[name='cardNumber']");
 
   const logInEmail = loginForm.querySelector("input[name='email']");
   const logInPass = loginForm.querySelector("input[name='pswd']");
@@ -23,7 +26,14 @@ export function initLogInUserModal() {
 
   signupForm.onsubmit = function (event) {
     event.preventDefault();
-    signUpUser(signupName.value, signUpEmail.value, signUpPass.value);
+    signUpUser(
+      signupName.value,
+      signUpEmail.value,
+      signUpPass.value,
+      signUpAddress.value,
+      signUpCreditCard.value,
+      signUpPhone.value
+    );
   };
 
   loginForm.onsubmit = function (event) {
@@ -37,23 +47,45 @@ export function initLogInUserModal() {
 
   // Aggiungi gestore di eventi per checkbox
   chk.onchange = function () {
+    const loginFormContainer = document.querySelector(".login");
+    const signupFormContainer = document.querySelector(".signup");
     if (chk.checked) {
-      document.querySelector(".login").classList.add("active");
-      document.querySelector(".signup").classList.remove("active");
+      loginFormContainer.classList.add("active");
+      signupFormContainer.classList.remove("active");
     } else {
-      document.querySelector(".signup").classList.add("active");
-      document.querySelector(".login").classList.remove("active");
+      signupFormContainer.classList.add("active");
+      loginFormContainer.classList.remove("active");
     }
   };
+
+  // Verifica se l'utente è già loggato all'avvio della pagina
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (loggedInUser) {
+    showLoggedInUI(loggedInUser.name);
+  }
 }
 
-export function signUpUser(signUpName, signUpEmail, signUpPass) {
+export function signUpUser(
+  signUpName,
+  signUpEmail,
+  signUpPass,
+  signUpAddress,
+  signUpCreditCard,
+  signUpPhone
+) {
   const users = JSON.parse(localStorage.getItem("users")) || [];
   if (users.find((user) => user.email === signUpEmail)) {
     alert("Email already registered");
     return;
   }
-  users.push({ name: signUpName, email: signUpEmail, password: signUpPass });
+  users.push({
+    name: signUpName,
+    email: signUpEmail,
+    password: signUpPass,
+    address: signUpAddress,
+    cardNumber: signUpCreditCard,
+    phone: signUpPhone,
+  });
   localStorage.setItem("users", JSON.stringify(users));
   alert("User registered successfully");
 }
@@ -64,11 +96,50 @@ export function logInUser(loginEmail, loginPass) {
     (user) => user.email === loginEmail && user.password === loginPass
   );
   if (user) {
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    showLoggedInUI(user.name);
     alert("Login successful");
   } else {
     alert("Invalid credentials");
   }
 }
 
+export function logOutUser() {
+  localStorage.removeItem("loggedInUser");
+  showLoggedOutUI();
+}
+
+function showLoggedInUI(userName) {
+  const loggedInUserSpan = document.getElementById("userName");
+  const logInSignUpBtn = document.getElementById("logInSignUp");
+  const logOutBtn = document.getElementById("logOutBtn");
+
+  loggedInUserSpan.textContent =
+    userName.charAt(0).toUpperCase() + userName.slice(1);
+
+  logOutBtn.style.display = "inline-block";
+
+  document.getElementById("form-container").style.display = "none"; // Chiude la modale di login
+}
+
+export function showLoggedOutUI() {
+  const loggedInUserSpan = document.getElementById("userName");
+  const logInSignUpBtn = document.getElementById("logInSignUp");
+  const logOutBtn = document.getElementById("logOutBtn");
+
+  // Rimuove eventuali dati dell'utente visibili
+  loggedInUserSpan.textContent = "";
+  logOutBtn.style.display = "none";
+  logInSignUpBtn.style.display = "inline-block";
+}
+
 // Inizializza la modale di login al caricamento della pagina
-document.addEventListener("DOMContentLoaded", initLogInUserModal);
+document.addEventListener("DOMContentLoaded", function () {
+  initLogInUserModal();
+
+  // Aggiungi il gestore dell'evento per il click sul pulsante di logout
+  const logOutBtn = document.getElementById("logOutBtn");
+  logOutBtn.addEventListener("click", function () {
+    logOutUser();
+  });
+});

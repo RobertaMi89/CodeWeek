@@ -38,8 +38,10 @@
         </span>
         <div class="user">
           <span
-            ><img src="./assets/logUser.png" alt="log in" />Ciao,
-            <span id="userName"></span
+            ><img
+              src="./assets/logUser.png"
+              alt="log in"
+              id="logInSignUp" />Ciao, <span id="userName"></span
           ></span>
           <span id="cart-icon" class="cart">
             <img src="./assets/cartLogo.png" alt="cart" />
@@ -48,28 +50,18 @@
         </div>
 
         <!--LOGIN-->
-        <div class="form-container">
-          <div class="form">
+        <div class="form-container" id="form-container">
+          <div class="form" id="messageBox">
+            <span class="close">&times;</span>
             <input type="checkbox" id="chk" aria-hidden="true" />
             <div class="signup">
               <form>
                 <label for="chk" aria-hidden="true">Sign up</label>
-                <input
-                  type="text"
-                  name="txt"
-                  placeholder="User name"
-                  required=""
-                />
+                <input type="text" name="txt" placeholder="Name" required="" />
                 <input
                   type="email"
                   name="email"
                   placeholder="Email"
-                  required=""
-                />
-                <input
-                  type="number"
-                  name="broj"
-                  placeholder="BrojTelefona"
                   required=""
                 />
                 <input
@@ -78,7 +70,7 @@
                   placeholder="Password"
                   required=""
                 />
-                <button>Sign up</button>
+                <button id="doSignUpBtn">Sign up</button>
               </form>
             </div>
             <div class="login">
@@ -96,7 +88,7 @@
                   placeholder="Password"
                   required=""
                 />
-                <button>Login</button>
+                <button id="doLoginBtn">Login</button>
               </form>
             </div>
           </div>
@@ -120,22 +112,31 @@
       <!--SIDEBAR-->
       <div class="sidebar">
         <div class="menu">
-          <span>Ricerca per</span>
+          <span>Ricerca per :</span>
           <span>Categoria</span>
-          <button class="filter-button" data-category="/electronics">
-            Elettronica
-          </button>
-          <button class="filter-button" data-category="/jewelery">
-            Gioielli
-          </button>
-          <button class="filter-button" data-category="/men's clothing">
-            Abbigliamento Uomo
-          </button>
-          <button class="filter-button" data-category="/women's clothing">
-            Abbigliamento Donna
-          </button>
+
+          <select id="category-select">
+            <option value="" data-category="">Tutti i prodotti</option>
+            <option value="/electronics" data-category="/electronics">
+              Elettronica
+            </option>
+            <option value="/jewelery" data-category="/jewelery">
+              Gioielli
+            </option>
+            <option value="/men's clothing" data-category="/men's clothing">
+              Abbigliamento Uomo
+            </option>
+            <option value="/women's clothing" data-category="/women's clothing">
+              Abbigliamento Donna
+            </option>
+          </select>
+
           <span>Prezzo</span>
-          <span>Recensioni</span>
+          <select id="price-select">
+            <option value="" data-category="">Tutti i prodotti</option>
+            <option value="asc">Meno Costosi</option>
+            <option value="desc">Più Costosi</option>
+          </select>
         </div>
       </div>
 

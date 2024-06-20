@@ -20,7 +20,7 @@
       "category": "Categoria",
       "electronics": "Elettronica",
       "jewelery": "Gioielli",
-      "mens_clothing": "Abbigliamento Uomo",
+      "mens-clothing": "Abbigliamento Uomo",
       "womens_clothing": "Abbigliamento Donna",
       "price": "Prezzo",
       "reviews": "Recensioni"
@@ -40,7 +40,7 @@
     "categories": {
       "electronics": "Electronics",
       "jewelery": "Jewelery",
-      "mens_clothing": "Men's Clothing",
+      "mens-clothing": "Men's Clothing",
       "womens_clothing": "Women's Clothing"
     },
     "cart": {

@@ -6,7 +6,8 @@ export async function loadTranslations(language) {
     const response = await fetch("./js/translations.json");
     const data = await response.json();
     translations = data;
-    currentLanguage = language;
+    setCurrentLanguage(language);
+    translateUI();
   } catch (error) {
     console.error("Errore durante il caricamento delle traduzioni:", error);
   }
@@ -22,11 +23,26 @@ export function getCurrentLanguage() {
 }
 
 export function translate(key) {
-  return translations[currentLanguage] && translations[currentLanguage][key]
-    ? translations[currentLanguage][key]
-    : key;
+  const keys = key.split(".");
+  let result = translations[currentLanguage];
+
+  for (let k of keys) {
+    result = result ? result[k] : null;
+  }
+
+  return result || key;
 }
 
-export function getCurrentTranslations() {
-  return translations[currentLanguage];
+export function translateUI() {
+  const translatableElements = document.querySelectorAll("[data-translate]");
+  translatableElements.forEach((element) => {
+    const key = element.getAttribute("data-translate");
+    element.textContent = translate(key);
+  });
 }
+
+// Carica le traduzioni iniziali
+document.addEventListener("DOMContentLoaded", () => {
+  const savedLanguage = getCurrentLanguage();
+  loadTranslations(savedLanguage);
+});

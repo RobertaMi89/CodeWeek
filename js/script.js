@@ -1,14 +1,14 @@
 import { printAllProducts } from "./cards.js";
 import { getProducts } from "./fetch.js";
-import { filteredCategories } from "./filter.js";
+import { filteredCategories, filteredPrice } from "./filter.js";
 import { toggleCart, initializeCart, getCart } from "./cart.js";
 import {
   loadTranslations,
   setCurrentLanguage,
-  translate,
+  translateUI,
   getCurrentLanguage,
-  getCurrentTranslations,
 } from "./language.js";
+import { initLogInUserModal } from "./form.js";
 
 // Evento DOMContentLoaded per l'inizializzazione
 document.addEventListener("DOMContentLoaded", async () => {
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await initializeApp();
     printAllProducts();
     filteredCategories();
+    filteredPrice();
     toggleCart();
   } catch (error) {
     console.error(
@@ -84,39 +85,7 @@ async function initializeLanguage() {
   translateUI();
 }
 
-// Funzione per tradurre l'interfaccia utente
-function translateUI() {
-  const translations = getCurrentTranslations();
-
-  // Esempio di traduzione di un elemento specifico
-  const promoElement = document.getElementById("promo");
-  if (promoElement) {
-    promoElement.textContent = translations["promo"];
-  }
-
-  // Esempio di traduzione di altri elementi
-  const cartMenuElement = document.querySelector(".cart h2");
-  if (cartMenuElement) {
-    cartMenuElement.textContent = translations["shopping_cart"];
-  }
-
-  // Traduzione dell'elemento "Totale" nel carrello
-  const cartTotalElement = document.querySelector(".cart-total");
-  if (cartTotalElement) {
-    cartTotalElement.textContent = translations["total"];
-  }
-
-  // Traduzione dei nomi delle categorie nella sidebar
-  const sidebar = document.querySelector(".sidebar");
-  const categoryButtons = sidebar.querySelectorAll(".filter-button");
-  categoryButtons.forEach((button) => {
-    const category = button.getAttribute("data-category").replace("/", "");
-    button.textContent = translations["categories"][category];
-  });
-
-  // Esempio di aggiornamento del conteggio nel carrello
-  updateCartCount();
-}
+updateCartCount();
 
 // Funzione per aggiornare il conteggio del carrello (esempio)
 function updateCartCount() {

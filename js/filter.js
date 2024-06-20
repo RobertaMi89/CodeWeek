@@ -1,24 +1,50 @@
-import { getCategories } from "./fetch.js";
+import { getCategories, getProducts } from "./fetch.js";
 import { createProductCard } from "./cards.js";
-//FILTRO RICERCA BOTTONI
 
-export function filteredCategories() {
-  document.querySelectorAll(".filter-button").forEach((button) => {
-    button.addEventListener("click", async (e) => {
-      const category = e.target.getAttribute("data-category");
-      try {
-        const data = await getCategories(category);
-        const productList = document.getElementById("wrapper");
+async function buildProductsCard(category = null, order = null) {
+  try {
+    let data;
+    if (category) {
+      data = await getCategories(category);
+    } else {
+      data = await getProducts();
+    }
 
-        productList.innerHTML = "";
+    // Ordina i prodotti filtrati in base al prezzo
+    if (order === "asc") {
+      data.sort((a, b) => a.price - b.price);
+    } else if (order === "desc") {
+      data.sort((a, b) => b.price - a.price);
+    }
 
-        data.forEach((product) => {
-          const card = createProductCard(product);
-          productList.appendChild(card);
-        });
-      } catch (error) {
-        console.error("Errore:", error);
-      }
+    const productList = document.getElementById("wrapper");
+    productList.innerHTML = "";
+
+    data.forEach((product) => {
+      const card = createProductCard(product);
+      productList.appendChild(card);
     });
+  } catch (error) {
+    console.error("Errore:", error);
+  }
+}
+
+// FILTRO RICERCA PER CATEGORIA
+export function filteredCategories() {
+  const selectElement = document.getElementById("category-select");
+
+  selectElement.addEventListener("change", async (e) => {
+    const category = e.target.value;
+    buildProductsCard(category, document.getElementById("price-select").value);
+  });
+}
+
+// FILTRO RICERCA PREZZO
+export function filteredPrice() {
+  const selectElement = document.getElementById("price-select");
+
+  selectElement.addEventListener("change", async (e) => {
+    const order = e.target.value; // "asc" per crescente, "desc" per decrescente
+    buildProductsCard(document.getElementById("category-select").value, order);
   });
 }

@@ -1,7 +1,6 @@
 const apiUrl = "https://fakestoreapi.com";
 const products = `${apiUrl}/products`;
 const categories = `${products}/category`;
-const prices = `${products}/price`;
 
 let objGlobalFetch = {
   products: null,

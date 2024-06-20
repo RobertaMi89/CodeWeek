@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ita">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Beautiful Commerce</title>
+  </head>
+  <body>
+    <header>
+      <!--Banner iniziale con focus promo e selezione lingue-->
+      <div class="focusBanner">
+        <p id="promo">PROMO 20% sul primo acquisto</p>
+        <select id="language-select">
+          <option value="it">Italiano</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+
+      <!--NAVBAR-->
+      <nav class="navbar">
+        <a href="#"
+          ><img src="./assets/beautiful commerce.png" alt="logo" />
+        </a>
+        <span class="container">
+          <span class="search-box">
+            <input type="text" id="search-input" />
+            <span></span>
+          </span>
+        </span>
+        <div class="user">
+          <span id="logInSignUp">
+            <img src="./assets/logUser.png" alt="log in" />Ciao,
+            <span id="userName"></span>
+          </span>
+          <span id="logOutBtn" style="display: none">
+            <img src="./assets/logout.png" alt="logOut" />Logout
+          </span>
+          <span id="cart-icon" class="cart">
+            <img src="./assets/cartLogo.png" alt="cart" />
+            <span class="cart-count"></span>
+          </span>
+        </div>
+
+        <!--LOGIN-->
+        <div class="form-container" id="form-container">
+          <div class="form" id="messageBox">
+            <input type="checkbox" id="chk" aria-hidden="true" />
+            <div class="signup">
+              <span class="close">&times;</span>
+              <form class="activeForm">
+                <label for="chk" aria-hidden="true" id="labelSignUp"
+                  >Sign up</label
+                >
+                <input type="text" name="txt" placeholder="Name" required="" />
+
+                <input
+                  type="tel"
+                  name="tel"
+                  placeholder="Phone Number"
+                  required=""
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required=""
+                />
+                <input
+                  type="password"
+                  name="pswd"
+                  placeholder="Password"
+                  required=""
+                />
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Address"
+                  required=""
+                />
+                <input
+                  type="text"
+                  name="cardNumber"
+                  placeholder="Card Number"
+                  required=""
+                />
+                <button id="doSignUpBtn">Sign up</button>
+              </form>
+            </div>
+            <div class="login">
+              <form>
+                <label for="chk" aria-hidden="true" id="labelLogin"
+                  >Login</label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required=""
+                />
+                <input
+                  type="password"
+                  name="pswd"
+                  placeholder="Password"
+                  required=""
+                />
+                <button id="doLoginBtn">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--CARRELLO-->
+        <div class="cartTab">
+          <div class="headCart">
+            <h2>Carrello</h2>
+            <span class="close">X</span>
+          </div>
+          <div class="listCart"></div>
+          <div class="btn">
+            <span class="cart-total">Totale:</span>
+            <button class="clear">Svuota</button>
+            <button class="checkOut">Acquista</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main></main>
+    <footer>
+      <!--dati e-commerce e social, pulsante per tornare su, contattaci, newsletter, (bot per chat?) -->
+    </footer>
+    <script src="./js/script.js" type="module"></script>
+  </body>
+</html>

@@ -9,7 +9,7 @@
   display: none;
   width: 400px;
   background-color: var(--secondary-color);
-  color: var(--bg-color);
+  color: var(--btn);
   position: fixed;
   inset: 0 0 0 auto;
   overflow-y: auto;

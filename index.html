@@ -175,10 +175,98 @@
       <!--CARDS-->
       <div id="loader" class="loader"></div>
       <div id="wrapper" class="wrapper"></div>
+
+      <!--CHECKOUT-->
+      <div class="modalCheckOut">
+        <!--USER INFORMATION-->
+
+        <div class="wrapperCheck">
+          <div class="containerCheck">
+            <form action="">
+              <h1>
+                <i class="fas fa-shipping-fast"></i>
+                Dettagli Ordine
+              </h1>
+              <div class="name">
+                <div>
+                  <label for="f-name">Nome</label>
+                  <input type="text" name="f-name" />
+                </div>
+                <div>
+                  <label for="l-name">Cognome</label>
+                  <input type="text" name="l-name" />
+                </div>
+              </div>
+              <div class="street">
+                <label for="name">via</label>
+                <input type="text" name="address" />
+              </div>
+              <div class="address-info">
+                <div>
+                  <label for="city">città</label>
+                  <input type="text" name="city" />
+                </div>
+                <div>
+                  <label for="state">stato</label>
+                  <input type="text" name="state" />
+                </div>
+                <div>
+                  <label for="zip">cap</label>
+                  <input type="text" name="zip" />
+                </div>
+              </div>
+              <h1>
+                <i class="far fa-credit-card"></i> Informazioni di Pagamento
+              </h1>
+              <div class="cc-num">
+                <label for="card-num">N. Carta Credito</label>
+                <input type="text" name="card-num" />
+              </div>
+              <div class="cc-info">
+                <div>
+                  <label for="card-num">Scadenza</label>
+                  <input type="text" name="expire" />
+                </div>
+                <div>
+                  <label for="card-num">CCV</label>
+                  <input type="text" name="security" />
+                </div>
+              </div>
+              <div class="btns">
+                <button>Procedi</button>
+              </div>
+            </form>
+          </div>
+          <!--CARRELLO-->
+          <div class="cartTabCheck">
+            <span id="closeModalBtn">X</span>
+            <div class="headCartCheck">
+              <h2>Carrello</h2>
+              <span class="cartTotalCheck">Totale:</span>
+            </div>
+            <div class="listCartCheck"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modale Thank You Page -->
+      <!-- Modale Thank You Page -->
+      <div class="modalThankYou" style="display: none">
+        <div class="thankYouContent">
+          <h1>Grazie per il tuo acquisto!</h1>
+          <p>
+            Il tuo ordine è stato ricevuto con successo. Ecco i dettagli del tuo
+            ordine:
+          </p>
+          <div class="orderSummary"></div>
+          <button class="backToHomeBtn">Chiudi</button>
+        </div>
+      </div>
     </main>
     <footer>
       <!--dati e-commerce e social, pulsante per tornare su, contattaci, newsletter, (bot per chat?) -->
     </footer>
+    <script src="./checkout/js/scriptCheck.js" type="module"></script>
     <script src="./js/script.js" type="module"></script>
   </body>
 </html>

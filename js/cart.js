@@ -41,7 +41,7 @@ export function getCart() {
 }
 
 // Salva il carrello nel localStorage
-function saveCartToLocalStorage() {
+export function saveCartToLocalStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
@@ -67,7 +67,7 @@ export function addToCart(product) {
   updateCheckoutButtonState();
 }
 
-function updateCartCount() {
+export function updateCartCount() {
   const cartIcon = document.getElementById("cart-icon");
   const cartCount = cartIcon.querySelector(".cart-count");
 
@@ -77,7 +77,7 @@ function updateCartCount() {
   }
 }
 
-function updateCartTotal() {
+export function updateCartTotal() {
   let total = 0;
   cart.forEach((item) => {
     total += item.totalPrice;
@@ -207,8 +207,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Gestore di eventi per il pulsante "Acquista"
   checkoutButton.addEventListener("click", function () {
-    // Rimpiazza con l'URL effettivo della pagina di pagamento
-    window.location.href = "../../checkout/checkout.html";
+    if (cart.length > 0) {
+      const paymentModal = document.querySelector(".modalCheckOut");
+      const closeModalBtn = paymentModal.querySelector("#closeModalBtn");
+
+      paymentModal.style.display = "block";
+
+      closeModalBtn.addEventListener("click", function () {
+        paymentModal.style.display = "none";
+      });
+    }
   });
 
   // Chiama la funzione per inizializzare lo stato del pulsante "Acquista"

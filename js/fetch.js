@@ -24,7 +24,6 @@ export async function getProducts() {
     throw error;
   }
 }
-console.log(getProducts());
 
 export async function getCategories(category) {
   if (objGlobalFetch[category]) {

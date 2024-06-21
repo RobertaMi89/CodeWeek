@@ -35,18 +35,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // Funzioni per mostrare e nascondere il loader
-function showLoader() {
+export function showLoader() {
   const loader = document.getElementById("loader");
   loader.style.display = "block";
 }
 
-function hideLoader() {
+export function hideLoader() {
   const loader = document.getElementById("loader");
   loader.style.display = "none";
 }
 
 // Funzione per inizializzare l'applicazione
-async function initializeApp() {
+export async function initializeApp() {
   try {
     const products = await getProducts();
   } catch (error) {
@@ -70,7 +70,7 @@ function setupSearchFilter() {
 }
 
 // Funzione per inizializzare il sistema di lingua
-async function initializeLanguage() {
+export async function initializeLanguage() {
   const languageSelect = document.getElementById("language-select");
 
   languageSelect.addEventListener("change", async (event) => {

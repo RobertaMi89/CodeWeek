@@ -5,12 +5,10 @@
   --btn: #f9f0df;
 }
 .wrapper {
-  margin-top: 5%;
   width: 60%;
   display: flex;
   justify-content: center;
-  font-family: "Arimo";
-  background-color: var(--btn);
+  background-color: var(--btnText);
   box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
 }
 .container {
@@ -24,7 +22,7 @@ form {
   width: 100%;
 
   > * {
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   input {
@@ -33,7 +31,6 @@ form {
     border: 0;
     font-size: 1rem;
     letter-spacing: 0.15rem;
-    font-family: "Arimo";
     margin-top: 5px;
     color: var(--text);
     border-radius: 4px;
@@ -43,17 +40,26 @@ form {
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 2px;
-    color: var(--text);
+    color: var(--btn);
   }
 
   h1 {
     font-size: 24px;
     line-height: 10px;
-    color: var(--text);
+    color: var(--btn);
     letter-spacing: 1px;
   }
 
   h1:nth-of-type(2) {
     margin-top: 10%;
   }
+}
+.btns {
+  text-align: center;
+}
+.btns button {
+  background-color: var(--btn);
+  color: var(--btnText);
+  width: 150px;
+  align-content: center;
 }

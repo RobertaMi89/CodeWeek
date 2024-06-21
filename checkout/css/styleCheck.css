@@ -1,6 +1,7 @@
 @import url("./cartCheck.css");
 @import url("./information.css");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Arimo");
 /*reset*/
 * {
   margin: 0;
@@ -99,4 +100,8 @@ button:active {
     0px 1px 1px rgba(81, 41, 10, 0.15);
   transform: translateY(2px);
   transition-duration: 0.35s;
+}
+/*MAIN*/
+main {
+  display: flex;
 }

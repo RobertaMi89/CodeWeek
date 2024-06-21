@@ -1,0 +1,95 @@
+:root {
+  --text: #846d62;
+  --secondary-color: #a8a29c;
+  --btnText: #c28d59;
+  --btn: #f9f0df;
+}
+
+.cartTab {
+  width: 400px;
+  background-color: var(--secondary-color);
+  color: var(--bg-color);
+  position: fixed;
+  inset: 0 0 0 auto;
+  overflow-y: auto;
+  z-index: 1;
+}
+.listCart {
+  width: 95%;
+}
+.headCart .close {
+  margin-right: 10px;
+}
+
+.headCart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cartTab h2 {
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin: 0px 8px 8px 30px;
+  width: 100%;
+  background-color: white;
+  color: var(--text);
+  border-bottom: 1px solid var(--text);
+}
+
+.cart-item img {
+  width: 100px;
+  padding: 0 10px 0 10px;
+}
+
+.cart-item .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+}
+.cart-item p {
+  font-weight: 500;
+  color: var(--btnText);
+}
+.cartTab .btn {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 55px;
+  gap: 10px;
+}
+.btn button {
+  align-items: center;
+}
+.cartTab button {
+  background-color: var(--btn);
+  color: var(--btnText);
+  margin: 0 auto;
+}
+/* .cartTab button:active {
+  outline: none;
+} */
+.cartTab .listCart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+}
+.cart-total {
+  width: 100%;
+  text-align: center;
+}
+.btnDelete {
+  align-self: flex-start;
+  font-weight: 700;
+  font-size: 20px;
+}

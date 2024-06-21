@@ -9,7 +9,7 @@
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/styleCheck.css" />
     <title>Beautiful Commerce</title>
   </head>
   <body>
@@ -28,7 +28,7 @@
       <!--NAVBAR-->
       <nav class="navbar">
         <a href="#"
-          ><img src="./assets/beautiful commerce.png" alt="logo" />
+          ><img src="../assets/beautiful commerce.png" alt="logo" />
         </a>
         <span class="container">
           <span class="search-box">
@@ -38,104 +38,93 @@
         </span>
         <div class="user">
           <span id="logInSignUp">
-            <img src="./assets/logUser.png" alt="log in" />Ciao,
+            <img src="../assets/logUser.png" alt="log in" />Ciao,
             <span id="userName"></span>
           </span>
           <span id="logOutBtn" style="display: none">
-            <img src="./assets/logout.png" alt="logOut" />Logout
+            <img src="../assets/logout.png" alt="logOut" />Logout
           </span>
-          <span id="cart-icon" class="cart">
-            <img src="./assets/cartLogo.png" alt="cart" />
-            <span class="cart-count"></span>
-          </span>
-        </div>
-
-        <!--LOGIN-->
-        <div class="form-container" id="form-container">
-          <div class="form" id="messageBox">
-            <input type="checkbox" id="chk" aria-hidden="true" />
-            <div class="signup">
-              <span class="close">&times;</span>
-              <form class="activeForm">
-                <label for="chk" aria-hidden="true" id="labelSignUp"
-                  >Sign up</label
-                >
-                <input type="text" name="txt" placeholder="Name" required="" />
-
-                <input
-                  type="tel"
-                  name="tel"
-                  placeholder="Phone Number"
-                  required=""
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required=""
-                />
-                <input
-                  type="password"
-                  name="pswd"
-                  placeholder="Password"
-                  required=""
-                />
-                <input
-                  type="text"
-                  name="address"
-                  placeholder="Address"
-                  required=""
-                />
-                <input
-                  type="text"
-                  name="cardNumber"
-                  placeholder="Card Number"
-                  required=""
-                />
-                <button id="doSignUpBtn">Sign up</button>
-              </form>
-            </div>
-            <div class="login">
-              <form>
-                <label for="chk" aria-hidden="true" id="labelLogin"
-                  >Login</label
-                >
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required=""
-                />
-                <input
-                  type="password"
-                  name="pswd"
-                  placeholder="Password"
-                  required=""
-                />
-                <button id="doLoginBtn">Login</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <!--CARRELLO-->
-        <div class="cartTab">
-          <div class="headCart">
-            <h2>Carrello</h2>
-            <span class="close">X</span>
-          </div>
-          <div class="listCart"></div>
-          <div class="btn">
-            <span class="cart-total">Totale:</span>
-            <button class="clear">Svuota</button>
-            <button class="checkOut">Acquista</button>
-          </div>
         </div>
       </nav>
     </header>
-    <main></main>
+
+    <!--CHECKOUT-->
+    <main>
+      <!--CARRELLO-->
+      <div class="cartTab">
+        <div class="headCart">
+          <h2>Carrello</h2>
+          <span class="close">X</span>
+        </div>
+        <div class="listCart"></div>
+        <div class="btn">
+          <span class="cart-total">Totale:</span>
+          <button class="clear">Svuota</button>
+          <button class="checkOut">Acquista</button>
+        </div>
+      </div>
+      <!--USER INFORMATION-->
+      <div class="wrapper">
+        <div class="container">
+          <form action="">
+            <h1>
+              <i class="fas fa-shipping-fast"></i>
+              Shipping Details
+            </h1>
+            <div class="name">
+              <div>
+                <label for="f-name">First</label>
+                <input type="text" name="f-name" />
+              </div>
+              <div>
+                <label for="l-name">Last</label>
+                <input type="text" name="l-name" />
+              </div>
+            </div>
+            <div class="street">
+              <label for="name">Street</label>
+              <input type="text" name="address" />
+            </div>
+            <div class="address-info">
+              <div>
+                <label for="city">City</label>
+                <input type="text" name="city" />
+              </div>
+              <div>
+                <label for="state">State</label>
+                <input type="text" name="state" />
+              </div>
+              <div>
+                <label for="zip">Zip</label>
+                <input type="text" name="zip" />
+              </div>
+            </div>
+            <h1><i class="far fa-credit-card"></i> Payment Information</h1>
+            <div class="cc-num">
+              <label for="card-num">Credit Card No.</label>
+              <input type="text" name="card-num" />
+            </div>
+            <div class="cc-info">
+              <div>
+                <label for="card-num">Exp</label>
+                <input type="text" name="expire" />
+              </div>
+              <div>
+                <label for="card-num">CCV</label>
+                <input type="text" name="security" />
+              </div>
+            </div>
+            <div class="btns">
+              <button>Purchase</button>
+              <button>Back to cart</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
     <footer>
       <!--dati e-commerce e social, pulsante per tornare su, contattaci, newsletter, (bot per chat?) -->
     </footer>
-    <script src="./js/script.js" type="module"></script>
+    <script src="../js/script.js" type="module"></script>
   </body>
 </html>

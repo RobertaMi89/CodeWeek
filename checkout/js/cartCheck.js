@@ -1,200 +1,144 @@
-let cart = [];
+// Importa le funzioni necessarie da cart.js
+import {
+  getCart,
+  updateCartTotal,
+  updateCartCount,
+  saveCartToLocalStorage,
+} from "../../js/cart.js";
 
-// Recupera i dati dal localStorage all'avvio della pagina
-export function initializeCart() {
-  const cartElement = document.querySelector(".cartTab");
+// Funzione per inizializzare il carrello nella modale di pagamento
+export function initializeCartForCheckout() {
+  const cartCheckElement = document.querySelector(
+    ".modalCheckOut .listCartCheck"
+  );
 
-  const savedCart = localStorage.getItem("cart");
-  if (savedCart) {
-    cart = JSON.parse(savedCart);
-  } else {
-    cart = []; // Inizializza il carrello se non ci sono dati nel localStorage
-  }
+  // Recupera il carrello corrente dal localStorage
+  let cart = getCart();
 
-  updateCartTotal();
-  updateCartCount();
-  updateCartView();
+  // Aggiorna la visualizzazione del carrello nella modale di pagamento
+  function updateCartViewForCheckout() {
+    cartCheckElement.innerHTML = ""; // Svuota la lista dei prodotti nel carrello
 
-  // Aggiorna lo stato del pulsante "Acquista"
-  updateCheckoutButtonState();
-}
+    // Recupera il carrello corrente dal localStorage
+    cart = getCart();
 
-// Ottieni il carrello corrente
-export function getCart() {
-  return cart;
-}
+    cart.forEach((product) => {
+      const item = document.createElement("div");
+      item.id = `product_${product.id}`;
+      item.classList.add("cartItemCheck");
 
-// Salva il carrello nel localStorage
-function saveCartToLocalStorage() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
+      const title = document.createElement("h3");
+      title.textContent = product.title;
 
-export function addToCart(product) {
-  const existingItem = cart.find((item) => item.title === product.title);
+      const price = document.createElement("span");
+      price.textContent = `${product.price} $`;
 
-  if (existingItem) {
-    existingItem.quantity += 1;
-    existingItem.totalPrice = existingItem.quantity * existingItem.price;
-  } else {
-    product.quantity = 1;
-    product.totalPrice = product.price;
-    cart.push(product);
-  }
+      const quantityText = document.createElement("span");
+      quantityText.textContent = "Qt: ";
 
-  updateCartTotal();
-  updateCartCount();
-  updateCartView();
+      const quantity = document.createElement("span");
+      quantity.textContent = product.quantity;
 
-  saveCartToLocalStorage();
-
-  // Aggiorna lo stato del pulsante "Acquista" dopo l'aggiunta al carrello
-  updateCheckoutButtonState();
-}
-
-function updateCartCount() {
-  const cartIcon = document.getElementById("cart-icon");
-  const cartCount = cartIcon.querySelector(".cart-count");
-
-  if (cartCount) {
-    const totalCount = cart.reduce((acc, item) => acc + item.quantity, 0);
-    cartCount.textContent = `(${totalCount})`;
-  }
-}
-
-function updateCartTotal() {
-  let total = 0;
-  cart.forEach((item) => {
-    total += item.totalPrice;
-  });
-  const cartTotalElement = document.querySelector(".cart-total");
-  if (cartTotalElement) {
-    cartTotalElement.textContent = `Total: ${total.toFixed(2)} $`;
-  }
-}
-
-function updateCartView() {
-  const listCart = document.querySelector(".listCart");
-  listCart.innerHTML = ""; // Svuota la lista dei prodotti nel carrello
-
-  cart.forEach((product) => {
-    const item = document.createElement("div");
-    item.id = `product_${product.id}`;
-    item.classList.add("cart-item");
-
-    const img = document.createElement("img");
-    img.src = product.image;
-    img.alt = product.title;
-
-    const itemDetails = document.createElement("div");
-
-    const title = document.createElement("h3");
-    title.textContent = product.title;
-
-    const price = document.createElement("p");
-    price.textContent = `${product.price} $`;
-
-    const quantityInput = document.createElement("input");
-    quantityInput.classList.add("quantity");
-    quantityInput.type = "number";
-    quantityInput.value = product.quantity;
-    quantityInput.min = 0;
-
-    const totalPrice = document.createElement("p");
-    totalPrice.textContent = `Total: ${product.totalPrice} $`;
-
-    const deleteBtn = document.createElement("span");
-    deleteBtn.classList.add("btnDelete");
-    deleteBtn.textContent = "x";
-
-    itemDetails.appendChild(title);
-    itemDetails.appendChild(price);
-    itemDetails.appendChild(quantityInput);
-    itemDetails.appendChild(totalPrice);
-    item.appendChild(img);
-    item.appendChild(itemDetails);
-    listCart.appendChild(item);
-    item.appendChild(deleteBtn);
-
-    // Event listener per modificare la quantità del prodotto nel carrello
-    quantityInput.addEventListener("input", () => {
-      let newQuantity = parseInt(quantityInput.value);
-      if (newQuantity < 1) {
-        newQuantity = 1; // Imposta la quantità minima a 1
-      }
-
-      // Aggiorna la quantità e il prezzo totale del prodotto nel carrello
-      product.quantity = newQuantity;
-      product.totalPrice = product.quantity * product.price;
+      const totalPrice = document.createElement("p");
       totalPrice.textContent = `Total: ${product.totalPrice} $`;
-      updateCartTotal();
 
-      // Salva nel localStorage dopo ogni modifica al carrello
-      saveCartToLocalStorage();
+      item.appendChild(title);
+      item.appendChild(price);
+      item.appendChild(quantityText);
+      item.appendChild(quantity);
+      item.appendChild(totalPrice);
 
-      // Se la nuova quantità è 1 e l'utente continua a decrementare, rimuovi il prodotto dal carrello
-      if (quantityInput.value === "0") {
-        removeProductFromCart(product.id);
-      }
+      cartCheckElement.appendChild(item);
     });
-
-    // Event listener per rimuovere il prodotto dal carrello
-    deleteBtn.addEventListener("click", () => {
-      removeProductFromCart(product.id);
-    });
-  });
-}
-
-// Funzione per rimuovere il prodotto dal carrello
-function removeProductFromCart(productId) {
-  const index = cart.findIndex((item) => item.id === productId);
-  if (index !== -1) {
-    cart.splice(index, 1);
-    updateCartTotal();
-    updateCartCount();
-    updateCartView();
-    saveCartToLocalStorage();
-
-    // Aggiorna lo stato del pulsante "Acquista" dopo la rimozione dal carrello
-    updateCheckoutButtonState();
   }
-}
 
-// Funzione per aggiornare lo stato del pulsante "Acquista"
-function updateCheckoutButtonState() {
-  const checkoutButton = document.querySelector(".checkOut");
-  checkoutButton.disabled = cart.length === 0;
-}
+  // Aggiorna la visualizzazione iniziale del carrello nella modale di pagamento
+  updateCartViewForCheckout();
 
-// Inizializza il carrello all'avvio della pagina
-initializeCart();
+  // Event listener per modificare la quantità del prodotto nel carrello della modale di pagamento
+  cartCheckElement.addEventListener("input", (event) => {
+    const quantityInput = event.target;
+    const productId = parseInt(quantityInput.dataset.productId);
+    let newQuantity = parseInt(quantityInput.value);
 
-document.addEventListener("DOMContentLoaded", function () {
-  const clearBtn = document.querySelector(".clear");
-  const checkoutButton = document.querySelector(".checkOut");
+    // Trova il prodotto nel carrello
+    const product = cart.find((item) => item.id === productId);
 
-  // Gestore di eventi per il pulsante "Svuota"
-  clearBtn.addEventListener("click", function () {
-    // Svuota il carrello
-    cart = [];
-    saveCartToLocalStorage();
+    if (!product) {
+      return;
+    }
 
-    // Aggiorna la visualizzazione del carrello
-    updateCartView();
+    // Imposta la quantità minima a 1 se il valore è inferiore
+    if (newQuantity < 1) {
+      newQuantity = 1;
+      quantityInput.value = newQuantity;
+    }
 
-    // Aggiorna il totale e il conteggio
+    // Aggiorna la quantità e il prezzo totale del prodotto nel carrello
+    product.quantity = newQuantity;
+    product.totalPrice = product.quantity * product.price;
     updateCartTotal();
     updateCartCount();
+    updateCartViewForCheckout();
 
-    // Disabilita il pulsante "Acquista" se il carrello è vuoto
-    updateCheckoutButtonState();
+    // Salva nel localStorage dopo ogni modifica al carrello
+    saveCartToLocalStorage();
   });
 
-  // Gestore di eventi per il pulsante "Acquista"
-  checkoutButton.addEventListener("click", function () {
-    // Rimpiazza con l'URL effettivo della pagina di pagamento
-    // window.location.href = "../../checkout/checkout.html";
+  // Event listener per rimuovere il prodotto dal carrello nella modale di pagamento
+  cartCheckElement.addEventListener("click", (event) => {
+    const deleteBtn = event.target.closest(".btnDelete");
+    if (deleteBtn) {
+      const productId = parseInt(deleteBtn.dataset.productId);
+      removeProductFromCart(productId);
+    }
   });
 
-  // Chiama la funzione per inizializzare lo stato del pulsante "Acquista"
-  updateCheckoutButtonState();
+  // Funzione per rimuovere il prodotto dal carrello
+  function removeProductFromCart(productId) {
+    const index = cart.findIndex((item) => item.id === productId);
+    if (index !== -1) {
+      cart.splice(index, 1);
+      updateCartTotal();
+      updateCartCount();
+      updateCartViewForCheckout();
+      saveCartToLocalStorage();
+    }
+  }
+
+  // Funzione per aggiornare il totale del carrello nella modale di pagamento
+  function updateCartTotal() {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.totalPrice;
+    });
+    const cartTotalElement = document.querySelector(
+      ".modalCheckOut .cartTotalCheck"
+    );
+    if (cartTotalElement) {
+      cartTotalElement.textContent = `Total: ${total.toFixed(2)} $`;
+    }
+  }
+
+  // Funzione per aggiornare il conteggio dei prodotti nel carrello della modale di pagamento
+  function updateCartCount() {
+    const cartCount = document.querySelector(".modalCheckOut .cart-count");
+    if (cartCount) {
+      const totalCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+      cartCount.textContent = `(${totalCount})`;
+    }
+  }
+
+  // Inizializza il carrello nella modale di pagamento all'avvio della pagina
+  updateCartTotal();
+  updateCartCount();
+}
+document.addEventListener("DOMContentLoaded", function () {
+  const closeModalBtn = document.getElementById("closeModalBtn");
+  const cartTabCheck = document.querySelector(".modalCheckOut");
+
+  // Aggiungi un event listener per il click sul bottone "X" per chiudere la modale
+  closeModalBtn.addEventListener("click", function () {
+    cartTabCheck.style.display = "none";
+  });
 });

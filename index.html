@@ -55,11 +55,11 @@
           <div class="form" id="messageBox">
             <input type="checkbox" id="chk" aria-hidden="true" />
             <div class="signup">
-              <span class="close">&times;</span>
               <form class="activeForm">
                 <label for="chk" aria-hidden="true" id="labelSignUp"
                   >Sign up</label
                 >
+                <span class="close">&times;</span>
                 <input type="text" name="txt" placeholder="Name" required="" />
 
                 <input
@@ -92,11 +92,18 @@
                   placeholder="Card Number"
                   required=""
                 />
+                <input type="text" name="CCV" placeholder="CCV" required="" />
+                <input
+                  type="text"
+                  name="expireCard"
+                  placeholder="Expire Card"
+                  required=""
+                />
                 <button id="doSignUpBtn">Sign up</button>
               </form>
             </div>
             <div class="login">
-              <form>
+              <form class="formLogin">
                 <label for="chk" aria-hidden="true" id="labelLogin"
                   >Login</label
                 >
@@ -117,6 +124,7 @@
             </div>
           </div>
         </div>
+
         <!--CARRELLO-->
         <div class="cartTab">
           <div class="headCart">

@@ -13,6 +13,8 @@ export function initLogInUserModal() {
   const signUpPhone = signupForm.querySelector("input[name='tel']");
   const signUpAddress = signupForm.querySelector("input[name='address']");
   const signUpCreditCard = signupForm.querySelector("input[name='cardNumber']");
+  const signUpCCV = signupForm.querySelector("input[name='CCV']");
+  const signUpExpireCard = signupForm.querySelector("input[name='expireCard']");
 
   const logInEmail = loginForm.querySelector("input[name='email']");
   const logInPass = loginForm.querySelector("input[name='pswd']");
@@ -32,7 +34,9 @@ export function initLogInUserModal() {
       signUpPass.value,
       signUpAddress.value,
       signUpCreditCard.value,
-      signUpPhone.value
+      signUpPhone.value,
+      signUpCCV.value,
+      signUpExpireCard.value
     );
   };
 
@@ -71,7 +75,9 @@ export function signUpUser(
   signUpPass,
   signUpAddress,
   signUpCreditCard,
-  signUpPhone
+  signUpPhone,
+  signUpCCV,
+  signUpExpireCard
 ) {
   const users = JSON.parse(localStorage.getItem("users")) || [];
   if (users.find((user) => user.email === signUpEmail)) {
@@ -85,6 +91,8 @@ export function signUpUser(
     address: signUpAddress,
     cardNumber: signUpCreditCard,
     phone: signUpPhone,
+    ccv: signUpCCV,
+    expireCard: signUpExpireCard,
   });
   localStorage.setItem("users", JSON.stringify(users));
   alert("User registered successfully");

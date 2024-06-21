@@ -1,6 +1,6 @@
 :root {
   --bg-color: #fdf7f2;
-  --focus: #846d62;
+  --bg-colorDark: #c28d59;
   --secondary-color: #a8a29c;
   --text-color: rgb(30, 29, 29);
   --btn: #f9f0df;
@@ -22,27 +22,30 @@
 
 .form {
   height: 500px;
-  background: var(--focus);
+  background: var(--bg-colorDark);
   overflow: hidden;
   margin: 12% auto;
   border: 0;
-  width: 800px;
+  width: 756px;
   border-radius: 10px;
-  box-shadow: 5px 20px 50px #000;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 #chk {
   display: none;
 }
+
+/*SIGNUP*/
 .activeForm {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 #labelSignUp {
-  width: 100%;
+  width: 82%;
   margin-top: 8px;
 }
+
 .signup {
   position: relative;
   width: 100%;
@@ -67,21 +70,33 @@ label {
 }
 
 input {
-  width: 44%;
-  height: 10px;
+  width: 42%;
+  height: 8px;
   background: #e0dede;
   justify-content: center;
   display: flex;
-  margin: 20px auto;
-  padding: 12px;
+  margin: 4px auto;
+  padding: 10px;
   border: none;
   outline: none;
   border-radius: 5px;
 }
+
+#doSignUpBtn {
+  color: var(--bg-colorDark);
+  background-color: var(--bg-color);
+}
+#chk:checked ~ .signup label {
+  transform: scale(0.6);
+}
+
+/*LOGIN*/
 #labelLogin {
   margin-top: 90px;
 }
 .login {
+  display: flex;
+  flex-direction: column;
   height: 460px;
   background: #eee;
   border-radius: 60% / 10%;
@@ -89,28 +104,33 @@ input {
   transition: 0.8s ease-in-out;
 }
 
+#doLoginBtn {
+  display: flex;
+  justify-content: center;
+}
+#doLoginBtn:hover {
+  color: var(--bg-colorDark);
+}
 .login label {
   color: var(--focus);
   transform: scale(0.6);
 }
 
 #chk:checked ~ .login {
-  transform: translateY(-500px);
+  transform: translateY(-450px);
+  height: 490px;
 }
 
 #chk:checked ~ .login label {
   transform: scale(1);
 }
 
-#chk:checked ~ .signup label {
-  transform: scale(0.6);
-}
 .close {
   color: var(--close-btn-color);
   float: right;
   font-size: 28px;
   font-weight: bold;
-  margin-right: 12px;
+  width: 10px;
 }
 
 .close:hover,

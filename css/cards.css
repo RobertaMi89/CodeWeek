@@ -1,8 +1,7 @@
 :root {
   --light-color: #fdf7f2;
-  --focus: #846d62;
+  --text: #846d62;
   --secondary-color: #a8a29c;
-  --text-color: rgb(39, 37, 37);
   --background: #ffede5;
   --stars: rgb(250, 184, 30);
 }
@@ -11,9 +10,7 @@
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-  background-color: var(--background);
-  border-radius: 7px;
-  box-shadow: rgba(187, 176, 171, 0.715) 3px 3px 6px 0px inset;
+  box-shadow: rgba(187, 176, 171, 0.715) 2px 2px 6px 0px inset;
   max-height: calc(1100vh);
   padding: 10px;
 }
@@ -26,7 +23,7 @@
   background-color: white;
   border-radius: 20px;
   margin: 5px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .product-img {
   align-content: center;
@@ -55,7 +52,7 @@
 .product-text h3 {
   padding-top: 20px;
   font-size: 20px;
-  color: var(--focus);
+  color: var(--text);
 }
 
 .product-text p {
@@ -76,22 +73,11 @@
 .product-price-btn p {
   font-size: 28px;
   font-weight: 300;
-  color: var(--focus);
+  color: var(--text);
 }
 
 .buyNow {
-  box-sizing: border-box;
-  border: transparent;
-  border-radius: 60px;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--focus);
-  cursor: pointer;
-  outline: none;
-  height: 30px;
-  align-items: center;
+  color: var(--text);
   margin-left: 30px;
 }
 .buyNow:hover {

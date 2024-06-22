@@ -8,7 +8,6 @@ import {
   translateUI,
   getCurrentLanguage,
 } from "./language.js";
-import { initLogInUserModal } from "./form.js";
 
 // Evento DOMContentLoaded per l'inizializzazione
 document.addEventListener("DOMContentLoaded", async () => {
@@ -29,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   hideLoader();
 
-  await initializeLanguage(); // Inizializza il sistema di lingua
+  await initializeLanguage();
   initializeCart();
   setupSearchFilter();
 });
@@ -54,7 +53,7 @@ export async function initializeApp() {
   }
 }
 
-// Funzione per gestire il filtro della ricerca
+//filtro della ricerca
 function setupSearchFilter() {
   const searchInput = document.getElementById("search-input");
 

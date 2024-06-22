@@ -1,3 +1,5 @@
+import { getCart } from "../../js/cart.js";
+import { appendCartProducts } from "./cartCheck.js";
 export function saveUserInfo() {
   const userInfo = {
     firstName: document.querySelector('input[name="f-name"]').value,
@@ -9,7 +11,7 @@ export function saveUserInfo() {
     cardNumber: document.querySelector('input[name="card-num"]').value,
     expire: document.querySelector('input[name="expire"]').value,
     security: document.querySelector('input[name="security"]').value,
-    total: calculateTotal(), // Esempio: funzione per calcolare il totale dell'ordine
+    total: getCartTotal(),
   };
 
   localStorage.setItem("userInfo", JSON.stringify(userInfo));
@@ -34,80 +36,55 @@ export function loadUserInfo() {
       userInfo.expire || "";
     document.querySelector('input[name="security"]').value =
       userInfo.security || "";
-    document.querySelector(".orderTotal").textContent = `€${userInfo.total}`; // Aggiorna il totale dell'ordine
+
+    // totale dell'ordine
+    const orderTotalElement = document.querySelector(".orderTotal");
+    if (orderTotalElement) {
+      orderTotalElement.textContent = `€${userInfo.total.toFixed(2)}`;
+    } else {
+      console.error("Element .orderTotal not found in the DOM.");
+    }
+  } else {
+    console.error("No user info found in localStorage.");
   }
 }
 
-// Funzione per calcolare il totale dell'ordine (da implementare secondo le tue necessità)
-function calculateTotal() {
-  // Esempio di implementazione di calcolo del totale
-  return 100; // Sostituisci con il calcolo effettivo del totale dell'ordine
-}
+// Mostra la thank you page con le informazioni dell'ordine
+export function showThankYouPage() {
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const cart = getCart();
 
-// Funzione per mostrare la thank you page
-function showThankYouPage(userInfo) {
-  const modalThankYou = document.createElement("div");
-  modalThankYou.classList.add("modalThankYou");
+  if (!userInfo || !cart || cart.length === 0) {
+    return; //
+  }
 
-  const modalContent = document.createElement("div");
-  modalContent.classList.add("modal-content");
+  const modalThankYou = document.querySelector(".modalThankYou");
+  modalThankYou.style.display = "block";
 
-  const title = document.createElement("h2");
-  title.textContent = "Grazie per il tuo ordine!";
-  modalContent.appendChild(title);
+  const orderSummary = modalThankYou.querySelector(".orderSummary");
+  orderSummary.innerHTML = "";
 
-  // Crea e aggiungi il riepilogo dell'ordine
-  const orderSummary = document.createElement("div");
-  orderSummary.classList.add("orderSummary");
+  appendCartProducts(orderSummary, cart);
 
-  const nameLabel = document.createElement("p");
-  nameLabel.innerHTML = `<strong>Nome:</strong> ${userInfo.firstName} ${userInfo.lastName}`;
-  orderSummary.appendChild(nameLabel);
-
-  const addressLabel = document.createElement("p");
-  addressLabel.innerHTML = `<strong>Indirizzo:</strong> ${userInfo.address}, ${userInfo.city}, ${userInfo.state}, ${userInfo.zip}`;
-  orderSummary.appendChild(addressLabel);
-
-  const cardLabel = document.createElement("p");
-  cardLabel.innerHTML = `<strong>N. Carta Credito:</strong> ${userInfo.cardNumber}`;
-  orderSummary.appendChild(cardLabel);
-
-  const expireLabel = document.createElement("p");
-  expireLabel.innerHTML = `<strong>Scadenza:</strong> ${userInfo.expire}`;
-  orderSummary.appendChild(expireLabel);
-
-  const securityLabel = document.createElement("p");
-  securityLabel.innerHTML = `<strong>CCV:</strong> ${userInfo.security}`;
-  orderSummary.appendChild(securityLabel);
-
-  const totalLabel = document.createElement("p");
-  totalLabel.innerHTML = `<strong>Totale Ordine:</strong> €${userInfo.total.toFixed(
-    2
-  )}`;
-  orderSummary.appendChild(totalLabel);
-
-  modalContent.appendChild(orderSummary);
+  const userInfoHTML = `
+    <p><strong>Nome:</strong> ${userInfo.firstName} ${userInfo.lastName}</p>
+    <p><strong>Indirizzo:</strong> ${userInfo.address}, ${userInfo.city}, ${userInfo.state}, ${userInfo.zip}</p>
+    <p><strong>N. Carta Credito:</strong> ${userInfo.cardNumber}</p>
+    <p><strong>Scadenza:</strong> ${userInfo.expire}</p>
+    <p><strong>CCV:</strong> ${userInfo.security}</p>
+  `;
+  orderSummary.innerHTML += userInfoHTML;
 
   // Bottone per tornare alla homepage
-  const closeBtn = document.createElement("button");
-  closeBtn.textContent = "Torna alla Homepage";
-  closeBtn.classList.add("close-btn");
-  closeBtn.addEventListener("click", () => {
+  const backToHomeBtn = modalThankYou.querySelector(".backToHomeBtn");
+  backToHomeBtn.addEventListener("click", () => {
     modalThankYou.style.display = "none";
-    window.location.href = "index.html"; // Reindirizza alla homepage
+    window.location.href = "index.html";
+    localStorage.removeItem("cart");
   });
-
-  modalContent.appendChild(closeBtn);
-  modalThankYou.appendChild(modalContent);
-
-  // Aggiungi la modale alla pagina
-  document.body.appendChild(modalThankYou);
-
-  // Mostra la modale
-  modalThankYou.style.display = "block";
 }
 
-// Event listener per il click sul pulsante "Procedi"
+// click sul pulsante "Procedi"
 document.querySelector(".btns button").addEventListener("click", (e) => {
   e.preventDefault();
   saveUserInfo();
@@ -117,7 +94,8 @@ document.querySelector(".btns button").addEventListener("click", (e) => {
 document.addEventListener("DOMContentLoaded", () => {
   loadUserInfo();
 });
-// Funzione per ottenere il totale del carrello
+
+//totale del carrello
 export function getCartTotal() {
   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
   let total = 0;
@@ -126,5 +104,13 @@ export function getCartTotal() {
     total += item.price * item.quantity;
   });
 
-  return total.toFixed(2); // Ritorna il totale arrotondato a due decimali
+  return total;
 }
+
+//click sul pulsante "Procedi"
+document.querySelector(".btns button").addEventListener("click", (e) => {
+  e.preventDefault();
+  saveUserInfo();
+  loadUserInfo();
+  showThankYouPage();
+});

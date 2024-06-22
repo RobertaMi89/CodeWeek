@@ -1,4 +1,3 @@
-import { initializeCartForCheckout } from "./cartCheck.js";
 import { showLoader, hideLoader, initializeLanguage } from "../../js/script.js";
 import { initLogInUserModal } from "../../js/form.js";
 import { toggleCart } from "../../js/cart.js";
@@ -15,7 +14,6 @@ let cartOpen = false; // Flag per tenere traccia dello stato del carrello
 
 document.addEventListener("DOMContentLoaded", async () => {
   showLoader();
-  initializeCartForCheckout();
   initLogInUserModal();
 
   try {
@@ -34,19 +32,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   loadUserInfo(); // Carica i dati utente al caricamento della pagina
 });
 
-// Event listener per il click sul pulsante "Procedi"
+//click sul pulsante "Procedi"
 document.querySelector(".btns button").addEventListener("click", (e) => {
   e.preventDefault();
   saveUserInfo();
   showThankYouPage(); // Mostra la Thank You Page dopo il salvataggio dei dati
 });
 
-// Funzione per mostrare la Thank You Page
+// Thank You Page
 function showThankYouPage() {
   const modalThankYou = document.querySelector(".modalThankYou");
   modalThankYou.style.display = "block";
 
-  // Event listener per il pulsante "Torna alla Home Page"
+  // pulsante "Torna alla Home Page"
   const backButton = modalThankYou.querySelector(".backToHomeBtn");
   backButton.addEventListener("click", () => {
     modalThankYou.style.display = "none"; // Chiudi la Thank You Page
@@ -68,7 +66,7 @@ function closeCart() {
   cartOpen = false;
 }
 
-// Event listener per il pulsante del carrello
+// pulsante del carrello
 document.querySelector("#cart-icon").addEventListener("click", () => {
   const cart = document.querySelector(".cartTab");
   if (cartOpen) {

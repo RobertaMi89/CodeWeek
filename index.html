@@ -63,12 +63,6 @@
                 <input type="text" name="txt" placeholder="Name" required="" />
 
                 <input
-                  type="tel"
-                  name="tel"
-                  placeholder="Phone Number"
-                  required=""
-                />
-                <input
                   type="email"
                   name="email"
                   placeholder="Email"
@@ -80,25 +74,7 @@
                   placeholder="Password"
                   required=""
                 />
-                <input
-                  type="text"
-                  name="address"
-                  placeholder="Address"
-                  required=""
-                />
-                <input
-                  type="text"
-                  name="cardNumber"
-                  placeholder="Card Number"
-                  required=""
-                />
-                <input type="text" name="CCV" placeholder="CCV" required="" />
-                <input
-                  type="text"
-                  name="expireCard"
-                  placeholder="Expire Card"
-                  required=""
-                />
+
                 <button id="doSignUpBtn">Sign up</button>
               </form>
             </div>
@@ -250,7 +226,6 @@
       </div>
 
       <!-- Modale Thank You Page -->
-      <!-- Modale Thank You Page -->
       <div class="modalThankYou" style="display: none">
         <div class="thankYouContent">
           <h1>Grazie per il tuo acquisto!</h1>
@@ -258,7 +233,13 @@
             Il tuo ordine è stato ricevuto con successo. Ecco i dettagli del tuo
             ordine:
           </p>
+          <br />
           <div class="orderSummary"></div>
+          <br /><br />
+          <p>
+            <strong>Totale Ordine:</strong> <span class="orderTotal"></span>
+          </p>
+          <br />
           <button class="backToHomeBtn">Chiudi</button>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import { initializeCartForCheckout } from "../checkout/js/cartCheck.js";
+
 let cart = [];
 
 // Funzione per mostrare/nascondere il carrello
@@ -18,26 +20,25 @@ export function toggleCart() {
 // Recupera i dati dal localStorage all'avvio della pagina
 export function initializeCart() {
   const cartElement = document.querySelector(".cartTab");
-  cartElement.style.display = "none"; // Assicurati che il carrello sia nascosto all'inizio
+  cartElement.style.display = "none";
 
   const savedCart = localStorage.getItem("cart");
   if (savedCart) {
     cart = JSON.parse(savedCart);
   } else {
-    cart = []; // Inizializza il carrello se non ci sono dati nel localStorage
+    cart = [];
   }
 
   updateCartTotal();
   updateCartCount();
   updateCartView();
 
-  // Aggiorna lo stato del pulsante "Acquista"
   updateCheckoutButtonState();
 }
 
-// Ottieni il carrello corrente
+// carrello corrente
 export function getCart() {
-  return cart;
+  return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
 // Salva il carrello nel localStorage
@@ -63,7 +64,6 @@ export function addToCart(product) {
 
   saveCartToLocalStorage();
 
-  // Aggiorna lo stato del pulsante "Acquista" dopo l'aggiunta al carrello
   updateCheckoutButtonState();
 }
 
@@ -90,7 +90,7 @@ export function updateCartTotal() {
 
 function updateCartView() {
   const listCart = document.querySelector(".listCart");
-  listCart.innerHTML = ""; // Svuota la lista dei prodotti nel carrello
+  listCart.innerHTML = "";
 
   cart.forEach((product) => {
     const item = document.createElement("div");
@@ -116,7 +116,7 @@ function updateCartView() {
     quantityInput.min = 0;
 
     const totalPrice = document.createElement("p");
-    totalPrice.textContent = `Total: ${product.totalPrice} $`;
+    totalPrice.textContent = `Total: ${product.totalPrice.toFixed(2)} $`;
 
     const deleteBtn = document.createElement("span");
     deleteBtn.classList.add("btnDelete");
@@ -131,11 +131,11 @@ function updateCartView() {
     listCart.appendChild(item);
     item.appendChild(deleteBtn);
 
-    // Event listener per modificare la quantità del prodotto nel carrello
+    // modifica la quantità del prodotto nel carrello
     quantityInput.addEventListener("input", () => {
       let newQuantity = parseInt(quantityInput.value);
       if (newQuantity < 1) {
-        newQuantity = 1; // Imposta la quantità minima a 1
+        newQuantity = 1;
       }
 
       // Aggiorna la quantità e il prezzo totale del prodotto nel carrello
@@ -144,23 +144,21 @@ function updateCartView() {
       totalPrice.textContent = `Total: ${product.totalPrice} $`;
       updateCartTotal();
 
-      // Salva nel localStorage dopo ogni modifica al carrello
       saveCartToLocalStorage();
 
-      // Se la nuova quantità è 1 e l'utente continua a decrementare, rimuovi il prodotto dal carrello
       if (quantityInput.value === "0") {
         removeProductFromCart(product.id);
       }
     });
 
-    // Event listener per rimuovere il prodotto dal carrello
+    // rimuove il prodotto dal carrello
     deleteBtn.addEventListener("click", () => {
       removeProductFromCart(product.id);
     });
   });
 }
 
-// Funzione per rimuovere il prodotto dal carrello
+// rimuove il prodotto dal carrello
 function removeProductFromCart(productId) {
   const index = cart.findIndex((item) => item.id === productId);
   if (index !== -1) {
@@ -170,12 +168,11 @@ function removeProductFromCart(productId) {
     updateCartView();
     saveCartToLocalStorage();
 
-    // Aggiorna lo stato del pulsante "Acquista" dopo la rimozione dal carrello
     updateCheckoutButtonState();
   }
 }
 
-// Funzione per aggiornare lo stato del pulsante "Acquista"
+// aggiorna lo stato del pulsante "Acquista"
 function updateCheckoutButtonState() {
   const checkoutButton = document.querySelector(".checkOut");
   checkoutButton.disabled = cart.length === 0;
@@ -205,9 +202,10 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCheckoutButtonState();
   });
 
-  // Gestore di eventi per il pulsante "Acquista"
+  // pulsante "Acquista"
   checkoutButton.addEventListener("click", function () {
     if (cart.length > 0) {
+      initializeCartForCheckout();
       const paymentModal = document.querySelector(".modalCheckOut");
       const closeModalBtn = paymentModal.querySelector("#closeModalBtn");
 

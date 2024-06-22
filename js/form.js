@@ -10,11 +10,6 @@ export function initLogInUserModal() {
   const signupName = signupForm.querySelector("input[name='txt']");
   const signUpEmail = signupForm.querySelector("input[name='email']");
   const signUpPass = signupForm.querySelector("input[name='pswd']");
-  const signUpPhone = signupForm.querySelector("input[name='tel']");
-  const signUpAddress = signupForm.querySelector("input[name='address']");
-  const signUpCreditCard = signupForm.querySelector("input[name='cardNumber']");
-  const signUpCCV = signupForm.querySelector("input[name='CCV']");
-  const signUpExpireCard = signupForm.querySelector("input[name='expireCard']");
 
   const logInEmail = loginForm.querySelector("input[name='email']");
   const logInPass = loginForm.querySelector("input[name='pswd']");
@@ -28,16 +23,7 @@ export function initLogInUserModal() {
 
   signupForm.onsubmit = function (event) {
     event.preventDefault();
-    signUpUser(
-      signupName.value,
-      signUpEmail.value,
-      signUpPass.value,
-      signUpAddress.value,
-      signUpCreditCard.value,
-      signUpPhone.value,
-      signUpCCV.value,
-      signUpExpireCard.value
-    );
+    signUpUser(signupName.value, signUpEmail.value, signUpPass.value);
   };
 
   loginForm.onsubmit = function (event) {
@@ -69,16 +55,7 @@ export function initLogInUserModal() {
   }
 }
 
-export function signUpUser(
-  signUpName,
-  signUpEmail,
-  signUpPass,
-  signUpAddress,
-  signUpCreditCard,
-  signUpPhone,
-  signUpCCV,
-  signUpExpireCard
-) {
+export function signUpUser(signUpName, signUpEmail, signUpPass) {
   const users = JSON.parse(localStorage.getItem("users")) || [];
   if (users.find((user) => user.email === signUpEmail)) {
     alert("Email already registered");
@@ -88,11 +65,6 @@ export function signUpUser(
     name: signUpName,
     email: signUpEmail,
     password: signUpPass,
-    address: signUpAddress,
-    cardNumber: signUpCreditCard,
-    phone: signUpPhone,
-    ccv: signUpCCV,
-    expireCard: signUpExpireCard,
   });
   localStorage.setItem("users", JSON.stringify(users));
   alert("User registered successfully");

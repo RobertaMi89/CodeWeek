@@ -21,12 +21,12 @@
 }
 
 .form {
-  height: 500px;
+  width: 350px;
+  height: 472px;
   background: var(--bg-colorDark);
   overflow: hidden;
   margin: 12% auto;
   border: 0;
-  width: 756px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
@@ -41,10 +41,17 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 #labelSignUp {
-  width: 82%;
-  margin-top: 8px;
-  margin: 50px;
+  color: #fff;
+  font-size: 2.3em;
+  justify-content: center;
+  display: flex;
+  margin: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 85%;
+  transition: 0.5s ease-in-out;
 }
 
 .signup {
@@ -64,7 +71,7 @@ label {
   font-size: 2.3em;
   justify-content: center;
   display: flex;
-
+  margin: 50px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.5s ease-in-out;
@@ -93,11 +100,16 @@ input {
 
 /*LOGIN*/
 #labelLogin {
-  margin-top: 90px;
+  color: var(--bg-colorDark);
+  font-size: 2.3em;
+  justify-content: center;
+  display: flex;
+  margin: 35px 15px 124px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
 }
 .login {
-  display: flex;
-  flex-direction: column;
   height: 460px;
   background: #eee;
   border-radius: 60% / 10%;

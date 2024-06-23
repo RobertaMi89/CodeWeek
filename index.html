@@ -16,7 +16,8 @@
     <header>
       <!--Banner iniziale con focus promo e selezione lingue-->
       <div class="focusBanner">
-        <p id="promo">PROMO 20% sul primo acquisto</p>
+        <p id="promo" data-translate="promo">PROMO 20% sul primo acquisto</p>
+
         <select id="language-select">
           <option value="it">Italiano</option>
           <option value="en">English</option>
@@ -245,8 +246,72 @@
       </div>
     </main>
     <footer>
-      <!--dati e-commerce e social, pulsante per tornare su, contattaci, newsletter, (bot per chat?) -->
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h2 data-translate="beautiful_commerce">Beautiful Commerce</h2>
+          <p data-translate="store_description">
+            Il tuo negozio online di fiducia. Scopri le ultime offerte e i
+            prodotti più popolari. Grazie per aver scelto noi!
+          </p>
+          <div class="socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section links">
+          <h2 data-translate="useful_links">Link Utili</h2>
+          <ul>
+            <li><a href="#" data-translate="home">Home</a></li>
+            <li><a href="#" data-translate="shop">Shop</a></li>
+            <li><a href="#" data-translate="about_us">Chi Siamo</a></li>
+            <li><a href="#" data-translate="contact_us">Contattaci</a></li>
+            <li>
+              <a href="#" data-translate="privacy_policy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#" data-translate="terms_of_service"
+                >Termini di Servizio</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-section contact-form">
+          <h2 data-translate="contact_us">Contattaci</h2>
+          <form action="#">
+            <input
+              type="email"
+              name="email"
+              class="text-input contact-input"
+              placeholder="La tua Email..."
+            />
+            <textarea
+              name="message"
+              class="text-input contact-input"
+              placeholder="Il tuo Messaggio..."
+            ></textarea>
+            <button type="submit" class="btn btn-big contact-btn">
+              <i class="fas fa-envelope"></i> Invia
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024
+          <span data-translate="beautiful_commerce">Beautiful Commerce</span>.
+          Tutti i diritti riservati.
+        </p>
+        <a href="#" class="back-to-top"
+          ><i class="fas fa-arrow-up"></i> Torna su</a
+        >
+      </div>
     </footer>
+
     <script src="./checkout/js/scriptCheck.js" type="module"></script>
     <script src="./js/script.js" type="module"></script>
   </body>

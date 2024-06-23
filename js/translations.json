@@ -1,29 +1,43 @@
 {
   "it": {
     "promo": "PROMO 20% sul primo acquisto",
-    "hello": "Ciao",
-    "shopping-cart": "Carrello",
-    "total": "Totale",
-    "checkout": "Acquista",
-    "categories": {
-      "electronics": "Elettronica",
-      "jewelery": "Gioielli",
-      "mens_clothing": "Abbigliamento Uomo",
-      "womens_clothing": "Abbigliamento Donna"
-    },
-    "cart": {
-      "remove": "Rimuovi",
-      "update_quantity": "Aggiorna quantità"
+    "header": {
+      "signup": "Iscriviti",
+      "login": "Accedi",
+      "cart": "Carrello",
+      "total": "Totale"
     },
     "sidebar": {
       "search_by": "Ricerca per",
       "category": "Categoria",
+      "all_products": "Tutti i prodotti",
       "electronics": "Elettronica",
       "jewelery": "Gioielli",
-      "mens-clothing": "Abbigliamento Uomo",
+      "mens_clothing": "Abbigliamento Uomo",
       "womens_clothing": "Abbigliamento Donna",
       "price": "Prezzo",
-      "reviews": "Recensioni"
+      "low_price": "Meno Costosi",
+      "high_price": "Più Costosi"
+    },
+    "checkout": {
+      "details": "Dettagli Ordine",
+      "first_name": "Nome",
+      "last_name": "Cognome",
+      "street": "Via",
+      "city": "Città",
+      "state": "Stato",
+      "zip": "CAP",
+      "payment_info": "Informazioni di Pagamento",
+      "card_number": "N. Carta Credito",
+      "expiry": "Scadenza",
+      "ccv": "CCV",
+      "proceed": "Procedi"
+    },
+    "thank_you": {
+      "header": "Grazie per il tuo acquisto!",
+      "message": "Il tuo ordine è stato ricevuto con successo. Ecco i dettagli del tuo ordine:",
+      "total_label": "Totale Ordine:",
+      "close_button": "Chiudi"
     },
     "footer": {
       "terms": "Termini e condizioni",
@@ -32,62 +46,90 @@
     }
   },
   "en": {
-    "promo": "20% OFF on your first purchase",
-    "hello": "Hello",
-   "shopping-cart": "Shopping Cart",
-    "total": "Total",
-    "checkout": "Checkout",
-    "categories": {
-      "electronics": "Electronics",
-      "jewelery": "Jewelery",
-      "mens-clothing": "Men's Clothing",
-      "womens_clothing": "Women's Clothing"
-    },
-    "cart": {
-      "remove": "Remove",
-      "update_quantity": "Update Quantity"
+    "promo": "20% off on first purchase",
+    "header": {
+      "signup": "Sign up",
+      "login": "Login",
+      "cart": "Cart",
+      "total": "Total"
     },
     "sidebar": {
       "search_by": "Search by",
       "category": "Category",
+      "all_products": "All products",
       "electronics": "Electronics",
-      "jewelery": "Jewelery",
+      "jewelery": "Jewelry",
       "mens_clothing": "Men's Clothing",
       "womens_clothing": "Women's Clothing",
       "price": "Price",
-      "reviews": "Reviews"
+      "low_price": "Low Price",
+      "high_price": "High Price"
+    },
+    "checkout": {
+      "details": "Order Details",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "street": "Street",
+      "city": "City",
+      "state": "State",
+      "zip": "ZIP Code",
+      "payment_info": "Payment Information",
+      "card_number": "Card Number",
+      "expiry": "Expiry",
+      "ccv": "CCV",
+      "proceed": "Proceed"
+    },
+    "thank_you": {
+      "header": "Thank you for your purchase!",
+      "message": "Your order has been successfully received. Here are your order details:",
+      "total_label": "Order Total:",
+      "close_button": "Close"
     },
     "footer": {
-      "terms": "Terms and Conditions",
+      "terms": "Terms and conditions",
       "privacy": "Privacy Policy",
       "sitemap": "Site Map"
     }
   },
   "es": {
-    "promo": "20% de descuento en tu primera compra",
-    "hello": "Hola",
-   "shopping-cart": "Carrito de compras",
-    "total": "Total",
-    "checkout": "Comprar",
-    "categories": {
-      "electronics": "Electrónica",
-      "jewelery": "Joyería",
-      "mens_clothing": "Ropa de Hombre",
-      "womens_clothing": "Ropa de Mujer"
-    },
-    "cart": {
-      "remove": "Eliminar",
-      "update_quantity": "Actualizar Cantidad"
+    "promo": "20% de descuento en la primera compra",
+    "header": {
+      "signup": "Regístrate",
+      "login": "Iniciar sesión",
+      "cart": "Carrito",
+      "total": "Total"
     },
     "sidebar": {
       "search_by": "Buscar por",
       "category": "Categoría",
+      "all_products": "Todos los productos",
       "electronics": "Electrónica",
-      "jewelery": "Joyería",
+      "jewelery": "Joyas",
       "mens_clothing": "Ropa de Hombre",
       "womens_clothing": "Ropa de Mujer",
       "price": "Precio",
-      "reviews": "Opiniones"
+      "low_price": "Precio Bajo",
+      "high_price": "Precio Alto"
+    },
+    "checkout": {
+      "details": "Detalles del Pedido",
+      "first_name": "Nombre",
+      "last_name": "Apellido",
+      "street": "Calle",
+      "city": "Ciudad",
+      "state": "Estado",
+      "zip": "Código Postal",
+      "payment_info": "Información de Pago",
+      "card_number": "Número de Tarjeta",
+      "expiry": "Fecha de Expiración",
+      "ccv": "CCV",
+      "proceed": "Proceder"
+    },
+    "thank_you": {
+      "header": "¡Gracias por tu compra!",
+      "message": "Tu pedido ha sido recibido con éxito. Aquí están los detalles de tu pedido:",
+      "total_label": "Total del Pedido:",
+      "close_button": "Cerrar"
     },
     "footer": {
       "terms": "Términos y condiciones",
@@ -96,33 +138,47 @@
     }
   },
   "fr": {
-    "promo": "20% de réduction sur votre premier achat",
-    "hello": "Bonjour",
-   "shopping-cart": "Panier",
-    "total": "Total",
-    "checkout": "Acheter",
-    "categories": {
-      "electronics": "Électronique",
-      "jewelery": "Bijoux",
-      "mens_clothing": "Vêtements pour hommes",
-      "womens_clothing": "Vêtements pour femmes"
-    },
-    "cart": {
-      "remove": "Supprimer",
-      "update_quantity": "Mettre à jour la quantité"
+    "promo": "20% de réduction sur le premier achat",
+    "header": {
+      "signup": "Inscrivez-vous",
+      "login": "Connexion",
+      "cart": "Panier",
+      "total": "Total"
     },
     "sidebar": {
-      "search_by": "Recherche par",
+      "search_by": "Rechercher par",
       "category": "Catégorie",
+      "all_products": "Tous les produits",
       "electronics": "Électronique",
       "jewelery": "Bijoux",
-      "mens_clothing": "Vêtements pour hommes",
-      "womens_clothing": "Vêtements pour femmes",
+      "mens_clothing": "Vêtements Hommes",
+      "womens_clothing": "Vêtements Femmes",
       "price": "Prix",
-      "reviews": "Avis"
+      "low_price": "Prix Bas",
+      "high_price": "Prix Élevé"
+    },
+    "checkout": {
+      "details": "Détails de la Commande",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "street": "Rue",
+      "city": "Ville",
+      "state": "État",
+      "zip": "Code Postal",
+      "payment_info": "Informations de Paiement",
+      "card_number": "Numéro de Carte",
+      "expiry": "Date d'Expiration",
+      "ccv": "CCV",
+      "proceed": "Procéder"
+    },
+    "thank_you": {
+      "header": "Merci pour votre achat!",
+      "message": "Votre commande a été reçue avec succès. Voici les détails de votre commande:",
+      "total_label": "Total de la Commande:",
+      "close_button": "Fermer"
     },
     "footer": {
-      "terms": "Termes et conditions",
+      "terms": "Conditions générales",
       "privacy": "Politique de confidentialité",
       "sitemap": "Plan du site"
     }
